@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: f46ad27f86571b445881d9efc619d2be
+  productGUID: dd63aa86db4afd743b0c3395d2e50f9c
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -933,10 +933,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: cd4df6de-ac52-4bdd-82a9-7b8cd0bca029
+  cloudProjectId: f76ff559-46a5-4b84-9df1-3c33973ded29
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: FireworkProtectionSimulator
+  projectName: FireworkProtectionSimulator 2025-03-05_12-44-39
   organizationId: dmitriyyakubovskiy05
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
