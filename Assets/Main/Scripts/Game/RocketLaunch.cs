@@ -10,21 +10,18 @@ public class RocketLaunch:MonoBehaviour
     [SerializeField] private float force = 20f, duration = 5;
     [SerializeField] private bool isRandomFlight = false;
     [SerializeField] private ParticleSystem fire, explore;
+    private SoundController soundController;
     private bool flag = true;
-    private int xRand = 0, zRand = 0;
 
     private void Start()
     {
-        if (isRandomFlight)
-        {
-            var xRand = Random.Range(-50000,50000);
-            var zRand = Random.Range(-50000, 50000);
-        }
+        soundController = GetComponent<SoundController>();
     }
 
     public void StartFly()
     {
         StartCoroutine(DelayedAction());
+        soundController.PlaySound(0, volume:soundController.Volume);
         lightPointFly.SetActive(true);
     }
 
@@ -60,8 +57,8 @@ public class RocketLaunch:MonoBehaviour
             int xRand = 0, zRand = 0;
             if (isRandomFlight)
             {
-                xRand = Random.Range(-2, 2);
-                zRand = Random.Range(-2, 2);
+                xRand = Random.Range(-6, 6);
+                zRand = Random.Range(-6, 6);
             }
             body.AddForce((new Vector3(xRand, force, zRand)), ForceMode.Impulse);
         }
@@ -71,6 +68,7 @@ public class RocketLaunch:MonoBehaviour
     IEnumerator Boom()
     {
         explore.Play();
+        soundController.PlaySound(1, isDestroyed: true, volume: 1);
         body.useGravity = false;
         meshRenderer.enabled = false;
         yield return new WaitForSeconds(explore.main.startLifetimeMultiplier);

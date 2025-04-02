@@ -3,19 +3,17 @@ using UnityEngine;
 public class NPS_LaunchRocket : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject rocket;
-    private RocketLaunch button;
-    void Start()
-    {
-        button = rocket.GetComponent<RocketLaunch>();
-        
-    }
+    [SerializeField] private GameObject[] rockets;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             animator.SetTrigger("LaunchRocket");
-            button.StartFly();
+            for (int i = 0; i < rockets.Length; i++)
+            {
+                rockets[i].GetComponent<RocketLaunch>().StartFly();
+            }
         }
     }
 }
