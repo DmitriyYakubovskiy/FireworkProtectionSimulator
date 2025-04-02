@@ -10,28 +10,31 @@ public class RocketLaunch:MonoBehaviour
     [SerializeField] private float force = 20f, duration = 5;
     [SerializeField] private bool isRandomFlight = false;
     [SerializeField] private ParticleSystem fire, explore;
-    private bool cal = true;
+    private bool flag = true;
     private int xRand = 0, zRand = 0;
+
     private void Start()
     {
         if (isRandomFlight)
         {
-            var RndB = new System.Random();
-            var xRand = RndB.Next(1, 10);
-            var zRand = RndB.Next(1, 10);
+            var xRand = Random.Range(-50000,50000);
+            var zRand = Random.Range(-50000, 50000);
         }
     }
+
     public void StartFly()
     {
         StartCoroutine(DelayedAction());
         lightPointFly.SetActive(true);
     }
+
     private void Flying()
     {
         fire.Play();
         Debug.Log("Полёт");
         StartCoroutine(FlyRocket());
     }
+
     private void Explore()
     {
         StartCoroutine(Boom());
@@ -43,20 +46,28 @@ public class RocketLaunch:MonoBehaviour
     {
         Flying();
         yield return new WaitForSeconds(duration);
-        cal = false;
+        flag = false;
         fire.Stop();
         Explore();
         yield break;
     }
+
     IEnumerator FlyRocket()
     {
-        while (cal)
+        while (flag)
         {
             yield return new WaitForSeconds(0.2f);
+            int xRand = 0, zRand = 0;
+            if (isRandomFlight)
+            {
+                xRand = Random.Range(-2, 2);
+                zRand = Random.Range(-2, 2);
+            }
             body.AddForce((new Vector3(xRand, force, zRand)), ForceMode.Impulse);
         }
         yield break;
     }
+
     IEnumerator Boom()
     {
         explore.Play();
