@@ -1,9 +1,10 @@
-using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
+using UnityEngine;
 
 public class RocketLaunch:MonoBehaviour
 {
+    [SerializeField] private GameObject lightPointExplore;
+    [SerializeField] private GameObject lightPointFly;
     [SerializeField] private Rigidbody body;
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private float force = 20f, duration = 5;
@@ -20,9 +21,10 @@ public class RocketLaunch:MonoBehaviour
             var zRand = RndB.Next(1, 10);
         }
     }
-    public void StartPolet()
+    public void StartFly()
     {
         StartCoroutine(DelayedAction());
+        lightPointFly.SetActive(true);
     }
     private void Flying()
     {
@@ -33,6 +35,8 @@ public class RocketLaunch:MonoBehaviour
     private void Explore()
     {
         StartCoroutine(Boom());
+        lightPointFly.SetActive(false);
+        lightPointExplore.SetActive(true);
     }
 
     IEnumerator DelayedAction()

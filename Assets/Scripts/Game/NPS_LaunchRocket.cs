@@ -15,7 +15,7 @@ public class NPS_LaunchRocket : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             animator.SetTrigger("LaunchRocket");
-            button.StartPolet();
+            button.StartFly();
         }
     }
 }
