@@ -4,6 +4,7 @@ public class NPS_LaunchRocket : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject rocket;
+    [SerializeField] private DialogueWindow dialogueWindow;
     private RocketLaunch button;
     void Start()
     {
@@ -14,6 +15,7 @@ public class NPS_LaunchRocket : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            dialogueWindow.ShowDialogue("privet");
             animator.SetTrigger("LaunchRocket");
             button.StartPolet();
         }
