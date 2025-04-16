@@ -28,7 +28,6 @@ public class RocketLaunch:MonoBehaviour
     private void Flying()
     {
         fire.Play();
-        Debug.Log("Полёт");
         StartCoroutine(FlyRocket());
     }
 
@@ -68,7 +67,7 @@ public class RocketLaunch:MonoBehaviour
     IEnumerator Boom()
     {
         explore.Play();
-        soundController.PlaySound(1, isDestroyed: true, volume: 1);
+        soundController.PlaySound(1, isDestroyed: true, volume: 100);
         body.useGravity = false;
         meshRenderer.enabled = false;
         yield return new WaitForSeconds(explore.main.startLifetimeMultiplier);

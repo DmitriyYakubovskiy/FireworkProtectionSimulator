@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +11,23 @@ public class DialogueWindow : MonoBehaviour
     private Camera mainCamera;
     private bool isShowing = false;
 
-    void Start()
+    private void Start()
     {
-        mainCamera = Camera.main;
-        dialoguePanel.SetActive(false); // Скрываем панель при старте
+        //mainCamera = Camera.main;
+        //dialoguePanel.SetActive(false); // Скрываем панель при старте
+    }
+
+    private void Update()
+    {
+        if (isShowing)
+        {
+            // Конвертируем мировые координаты объекта в экранные
+            Vector3 worldPos = transform.position + Vector3.up * offsetY;
+            Vector3 screenPos = mainCamera.WorldToScreenPoint(worldPos);
+
+            // Устанавливаем позицию панели диалога
+            dialoguePanel.transform.position = screenPos;
+        }
     }
 
     public void ShowDialogue(string message)
@@ -28,19 +40,6 @@ public class DialogueWindow : MonoBehaviour
 
         // Запускаем корутину для скрытия через время
         StartCoroutine(HideAfterTime());
-    }
-
-    void Update()
-    {
-        if (isShowing)
-        {
-            // Конвертируем мировые координаты объекта в экранные
-            Vector3 worldPos = transform.position + Vector3.up * offsetY;
-            Vector3 screenPos = mainCamera.WorldToScreenPoint(worldPos);
-
-            // Устанавливаем позицию панели диалога
-            dialoguePanel.transform.position = screenPos;
-        }
     }
 
     private System.Collections.IEnumerator HideAfterTime()
