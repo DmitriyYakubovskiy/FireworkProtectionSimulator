@@ -13,12 +13,6 @@ public class DialogueWindow : MonoBehaviour
 
     private void Start()
     {
-        //mainCamera = Camera.main;
-        //dialoguePanel.SetActive(false); // Скрываем панель при старте
-    }
-
-    private void Update()
-    {
         if (isShowing)
         {
             // Конвертируем мировые координаты объекта в экранные
@@ -28,6 +22,11 @@ public class DialogueWindow : MonoBehaviour
             // Устанавливаем позицию панели диалога
             dialoguePanel.transform.position = screenPos;
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void ShowDialogue(string message)

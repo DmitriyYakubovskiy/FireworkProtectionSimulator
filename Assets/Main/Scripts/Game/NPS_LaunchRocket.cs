@@ -17,6 +17,7 @@ public class NPS_LaunchRocket : MonoBehaviour
             {
                 rockets[i].GetComponent<RocketLaunch>().StartFly();
             }
+            rockets = null;
         }
     }
 }
