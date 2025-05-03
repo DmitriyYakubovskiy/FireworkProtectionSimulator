@@ -1,55 +1,48 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DialogueWindow : MonoBehaviour
+public class DialogWindow : MonoBehaviour
 {
-    [SerializeField] private GameObject dialoguePanel; // Панель диалога
-    [SerializeField] private Text dialogueText; // Текст диалога
-    [SerializeField] private float offsetY = 2f; // Смещение по Y над объектом
-    [SerializeField] private float displayTime = 3f; // Время отображения
+    [SerializeField] private GameObject _dialogPanel;
+    [SerializeField] private float _rotationSpeed = 5f;
+    [SerializeField] private float _fadeDuration = 0.3f;
+    [SerializeField] private PlayerTrigger playerTrigger;
+    [SerializeField] private Transform _player;
 
-    private Camera mainCamera;
-    private bool isShowing = false;
+    private bool _isVisible;
 
-    private void Start()
+    private void Awake()
     {
-        if (isShowing)
-        {
-            // Конвертируем мировые координаты объекта в экранные
-            Vector3 worldPos = transform.position + Vector3.up * offsetY;
-            Vector3 screenPos = mainCamera.WorldToScreenPoint(worldPos);
-
-            // Устанавливаем позицию панели диалога
-            dialoguePanel.transform.position = screenPos;
-        }
+        HidePanel();
+        playerTrigger.OnPlayerEntered.AddListener(ShowPanel);
+        playerTrigger.OnPlayerExited.AddListener(HidePanel);
     }
 
     private void Update()
     {
-        
+        if (_isVisible && _player != null)
+        {
+            // Поворачиваем панель к игроку на плоскости Y
+            Vector3 lookDirection = _player.position - transform.position;
+            lookDirection.y = 0; // Игнорируем вертикальную ось
+
+            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                _rotationSpeed * Time.deltaTime
+            );
+        }
     }
 
-    public void ShowDialogue(string message)
+    private void ShowPanel()
     {
-        if (isShowing) return;
-
-        dialogueText.text = message;
-        dialoguePanel.SetActive(true);
-        isShowing = true;
-
-        // Запускаем корутину для скрытия через время
-        StartCoroutine(HideAfterTime());
+        _isVisible = true;
+        _dialogPanel.SetActive(_isVisible);
     }
 
-    private System.Collections.IEnumerator HideAfterTime()
+    private void HidePanel()
     {
-        yield return new WaitForSeconds(displayTime);
-        HideDialogue();
-    }
-
-    private void HideDialogue()
-    {
-        dialoguePanel.SetActive(false);
-        isShowing = false;
+        _isVisible = false;
+        _dialogPanel.SetActive(_isVisible);
     }
 }

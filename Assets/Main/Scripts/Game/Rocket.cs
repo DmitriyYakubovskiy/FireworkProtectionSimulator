@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class RocketLaunch:MonoBehaviour
+public class Rocket:MonoBehaviour
 {
     [SerializeField] private GameObject lightPointExplore;
     [SerializeField] private GameObject lightPointFly;
