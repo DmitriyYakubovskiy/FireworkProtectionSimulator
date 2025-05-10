@@ -1,0 +1,42 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "text": "Добрый вечер, что-то случилось?",
+            "event": "meet_MCHS",
+            "choices": [
+                {
+                    "text": "Здесь нельзя запускать салюты",
+                    "nextNodeId": 1
+                },
+                {
+                    "text": "Нет, всё хорошо",
+                    "nextNodeId": 2
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "text": "Блин, я не знал, сейчас всё уберу",
+            "event": "clean_fireworks",
+            "choices": [
+                {
+                    "text": "Спасибо за понимание",
+                    "nextNodeId": 3
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "Всего доброго",
+            "event": "lose",
+            "choices": []
+        },
+        {
+            "id": 3,
+            "text": "Эх, жалко всё таки...",
+            "event": "succes",
+            "choices": []
+        }
+    ]
+}
