@@ -13,7 +13,7 @@ public class DialogueSystem : MonoBehaviour
     private RocketLauncher rocketLauncher;
 
 
-    [System.Serializable]
+    [Serializable]
     public class DialogueNode
     {
         public int id;
@@ -22,14 +22,14 @@ public class DialogueSystem : MonoBehaviour
         public Choice[] choices;
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Choice
     {
         public string text;
         public int nextNodeId;
     }
 
-    [System.Serializable]
+    [Serializable]
     private class DialogueData
     {
         public DialogueNode[] nodes;
@@ -38,7 +38,7 @@ public class DialogueSystem : MonoBehaviour
     private DialogueData dialogueData;
     private Dictionary<int, DialogueNode> nodeLookup = new Dictionary<int, DialogueNode>();
 
-    void Start()
+    private void Start()
     {
         // Загружаем и парсим JSON
         dialogueData = JsonUtility.FromJson<DialogueData>(dialogueJson.text);
@@ -59,7 +59,7 @@ public class DialogueSystem : MonoBehaviour
         StartDialogue(0);
     }
 
-    void StartDialogue(int nodeId)
+    private void StartDialogue(int nodeId)
     {
         if (!nodeLookup.ContainsKey(nodeId))
         {
@@ -94,7 +94,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    void HandleEvent(string eventName)
+    private void HandleEvent(string eventName)
     {
         // Пример обработки событий
         switch (eventName)
@@ -111,7 +111,7 @@ public class DialogueSystem : MonoBehaviour
                 Debug.Log("Салюты запускаются");
                 rocketLauncher.Launch();
                 break;
-            case "succes":
+            case "success":
                 Debug.Log("Игрок направляется в темный лес!");
                 // Здесь можно загрузить новую сцену или активировать триггер
                 break;

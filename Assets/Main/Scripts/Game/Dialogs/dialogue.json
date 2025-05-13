@@ -35,7 +35,7 @@
         {
             "id": 3,
             "text": "Эх, жалко всё таки...",
-            "event": "succes",
+            "event": "success",
             "choices": []
         }
     ]
