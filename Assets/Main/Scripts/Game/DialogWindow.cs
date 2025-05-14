@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class DialogWindow : MonoBehaviour
 {
-    [SerializeField] private GameObject _dialogPanel;
-    [SerializeField] private float _rotationSpeed = 5f;
-    [SerializeField] private float _fadeDuration = 0.3f;
+    [SerializeField] private GameObject dialogPanel;
     [SerializeField] private PlayerTrigger playerTrigger;
-    [SerializeField] private Transform _player;
+    [SerializeField] private Transform player;
+    [SerializeField] private SoundController soundController;
+    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float fadeDuration = 0.3f;
 
-    private bool _isVisible;
+    private bool isVisible;
 
     private void Awake()
     {
@@ -19,30 +20,30 @@ public class DialogWindow : MonoBehaviour
 
     private void Update()
     {
-        if (_isVisible && _player != null)
+        if (isVisible && player != null)
         {
-            // ѕоворачиваем панель к игроку на плоскости Y
-            Vector3 lookDirection = _player.position - transform.position;
-            lookDirection.y = 0; // »гнорируем вертикальную ось
+            Vector3 lookDirection = player.position - transform.position;
+            lookDirection.y = 0;
 
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 targetRotation,
-                _rotationSpeed * Time.deltaTime
+                rotationSpeed * Time.deltaTime
             );
         }
     }
 
     private void ShowPanel()
     {
-        _isVisible = true;
-        _dialogPanel.SetActive(_isVisible);
+        isVisible = true;
+        soundController.PlaySound(0, soundController.Volume);
+        dialogPanel.SetActive(isVisible);
     }
 
     private void HidePanel()
     {
-        _isVisible = false;
-        _dialogPanel.SetActive(_isVisible);
+        isVisible = false;
+        dialogPanel.SetActive(isVisible);
     }
 }

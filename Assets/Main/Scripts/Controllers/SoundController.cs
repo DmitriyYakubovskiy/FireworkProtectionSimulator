@@ -19,9 +19,7 @@ public class SoundController : MonoBehaviour
     public void PlaySoundForUI()
     {
         if (sounds.Length == 0) return;
-        AudioClip clip = sounds[0].soundArray[Random.Range(0, sounds[0].soundArray.Length)];
-        audioSource.pitch = Random.Range(0.85f, 1.2f);
-        audioSource.PlayOneShot(clip, volume);
+        PlaySound(0, volume: Volume, isDestroyed:true);
     }
 
     public void PlaySound(int i = 0, float volume = 1f, float p1 = 0.85f, float p2 = 1.2f, bool isDestroyed = false)

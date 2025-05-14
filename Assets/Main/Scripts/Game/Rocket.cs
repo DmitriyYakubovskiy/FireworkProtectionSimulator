@@ -67,7 +67,7 @@ public class Rocket:MonoBehaviour
     IEnumerator Boom()
     {
         explore.Play();
-        soundController.PlaySound(1, isDestroyed: true, volume: 100);
+        soundController.PlaySound(1, isDestroyed: true, volume: 1);
         body.useGravity = false;
         meshRenderer.enabled = false;
         yield return new WaitForSeconds(explore.main.startLifetimeMultiplier);
