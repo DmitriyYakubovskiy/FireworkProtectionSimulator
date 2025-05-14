@@ -9,16 +9,19 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Button[] choiceButtons;
     [SerializeField] private TextAsset dialogueJson;
-    [SerializeField] private GameObject rockets;
+    [SerializeField] private GameObject rockets;//TODO
     private RocketLauncher rocketLauncher;
+    private ScoreManager scoreManager;
 
+    private DialogueData dialogueData;
+    private Dictionary<int, DialogueNode> nodeLookup = new Dictionary<int, DialogueNode>();
 
     [Serializable]
     public class DialogueNode
     {
         public int id;
         public string text;
-        public string @event; // Зарезервированное слово event, используем @event
+        public string dialogueEvent;
         public Choice[] choices;
     }
 
@@ -35,12 +38,9 @@ public class DialogueSystem : MonoBehaviour
         public DialogueNode[] nodes;
     }
 
-    private DialogueData dialogueData;
-    private Dictionary<int, DialogueNode> nodeLookup = new Dictionary<int, DialogueNode>();
-
     private void Start()
     {
-        // Загружаем и парсим JSON
+        scoreManager = FindFirstObjectByType<ScoreManager>();
         dialogueData = JsonUtility.FromJson<DialogueData>(dialogueJson.text);
         foreach (var node in dialogueData.nodes)
         {
@@ -53,8 +53,10 @@ public class DialogueSystem : MonoBehaviour
             button.gameObject.SetActive(false);
         }
 
-        rocketLauncher = rockets.GetComponent<RocketLauncher>();
-
+        if (rockets != null)
+        {
+            rocketLauncher = rockets.GetComponent<RocketLauncher>();
+        }
         // Начинаем диалог
         StartDialogue(0);
     }
@@ -70,10 +72,10 @@ public class DialogueSystem : MonoBehaviour
         DialogueNode currentNode = nodeLookup[nodeId];
         dialogueText.text = currentNode.text;
 
-        // Обрабатываем событие, если оно указано
-        if (!string.IsNullOrEmpty(currentNode.@event))
+        Debug.Log($"Диалог {currentNode.dialogueEvent}");
+        if (!string.IsNullOrEmpty(currentNode.dialogueEvent))
         {
-            HandleEvent(currentNode.@event);
+            HandleEvent(currentNode.dialogueEvent);
         }
 
         // Настраиваем кнопки выбора
@@ -96,24 +98,25 @@ public class DialogueSystem : MonoBehaviour
 
     private void HandleEvent(string eventName)
     {
+        Debug.Log("Познакомился с МЧС");
         // Пример обработки событий
         switch (eventName)
         {
             case "meet_MCHS":
-                Debug.Log("Познакомился с МЧС");
-                // Здесь можно открыть новую локацию или обновить UI
+                Debug.Log("dialogue_init");
                 break;
             case "clean_fireworks":
                 Debug.Log("Начался квест: Испытание героя!");
                 // Здесь можно активировать квест в системе квестов
                 break;
-            case "lose":
+            case "lose_with_start_rockets_1":
                 Debug.Log("Салюты запускаются");
+                scoreManager.Score -= 1;
                 rocketLauncher.Launch();
                 break;
-            case "success":
+            case "success_1":
                 Debug.Log("Игрок направляется в темный лес!");
-                // Здесь можно загрузить новую сцену или активировать триггер
+                scoreManager.Score += 1;
                 break;
             default:
                 Debug.LogWarning($"Неизвестное событие: {eventName}");

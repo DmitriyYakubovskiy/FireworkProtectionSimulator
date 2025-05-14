@@ -4,11 +4,11 @@ public class DialogWindow : MonoBehaviour
 {
     [SerializeField] private GameObject dialogPanel;
     [SerializeField] private PlayerTrigger playerTrigger;
-    [SerializeField] private Transform player;
     [SerializeField] private SoundController soundController;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float fadeDuration = 0.3f;
 
+    private Transform player;
     private bool isVisible;
 
     private void Awake()
@@ -16,6 +16,7 @@ public class DialogWindow : MonoBehaviour
         HidePanel();
         playerTrigger.OnPlayerEntered.AddListener(ShowPanel);
         playerTrigger.OnPlayerExited.AddListener(HidePanel);
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()

@@ -25,7 +25,7 @@ public class FootstepSound : MonoBehaviour
             if (accumulatedDistance >= stepDistance)
             {
                 soundController.PlaySound(0, soundController.Volume);
-                Debug.Log("Footstep sound played");
+                //Debug.Log("Footstep sound played");
                 accumulatedDistance = 0f;
             }
         }

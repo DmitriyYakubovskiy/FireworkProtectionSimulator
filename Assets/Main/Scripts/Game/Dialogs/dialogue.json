@@ -3,7 +3,7 @@
         {
             "id": 0,
             "text": "Добрый вечер, что-то случилось?",
-            "event": "meet_MCHS",
+            "dialogueEvent": "meet_MCHS",
             "choices": [
                 {
                     "text": "Здесь нельзя запускать салюты",
@@ -18,7 +18,7 @@
         {
             "id": 1,
             "text": "Блин, я не знал, сейчас всё уберу",
-            "event": "clean_fireworks",
+            "dialogueEvent": "clean_fireworks",
             "choices": [
                 {
                     "text": "Спасибо за понимание",
@@ -29,13 +29,13 @@
         {
             "id": 2,
             "text": "Всего доброго",
-            "event": "lose",
+            "dialogueEvent": "lose_with_start_rockets_1",
             "choices": []
         },
         {
             "id": 3,
             "text": "Эх, жалко всё таки...",
-            "event": "success",
+            "dialogueEvent": "success_1",
             "choices": []
         }
     ]
