@@ -307,7 +307,7 @@ MonoBehaviour:
   volume: 0.2
   sounds:
   - soundArray:
-    - {fileID: 8300000, guid: 6482912239a635249a35278f016e7bd3, type: 3}
+    - {fileID: 8300000, guid: 1f91561efe333fa4b8613fc98bb4834e, type: 3}
 --- !u!82 &5489057684995007182
 AudioSource:
   m_ObjectHideFlags: 0
