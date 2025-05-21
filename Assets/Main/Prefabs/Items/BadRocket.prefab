@@ -5475,7 +5475,7 @@ GameObject:
   - component: {fileID: 7842685832974596446}
   - component: {fileID: 8780066909816733033}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: BadRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5565,8 +5565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPointExplore: {fileID: 2733720972128807773}
   lightPointFly: {fileID: 755083677675215882}
-  force: 13.98
-  duration: 2.5
+  force: 2
+  duration: 1
   isRandomFlight: 1
   fire: {fileID: 245933622208735813}
   explore: {fileID: 4016966104852921291}

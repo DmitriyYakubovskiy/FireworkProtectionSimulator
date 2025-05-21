@@ -103,22 +103,33 @@ public class DialogueSystem : MonoBehaviour
             case "meet_MCHS":
                 Debug.Log("dialogue_init");
                 break;
+
             case "clean_fireworks":
                 Destroy(rocketLauncher.gameObject);
+                Destroy(gameObject, 5);
                 break;
+
             case "lose_1":
-                scoreManager.Score -= 1;
+                scoreManager.BadScore+=1;
+                Destroy(gameObject, 5);
                 break;  
+
             case "lose_with_start_rockets_1":
-                scoreManager.Score -= 1;
+                scoreManager.BadScore += 1;
                 rocketLauncher.Launch();
+                Destroy(gameObject, 5);
                 break;
+
             case "success_1":
-                scoreManager.Score += 1;
+                scoreManager.GoodScore += 1;
+                Destroy(gameObject, 5);
                 break;
+
             case "success_with_start_rockets_1":
-                scoreManager.Score += 1;
+                scoreManager.GoodScore += 1;
+                Destroy(gameObject, 5);
                 break;
+
             default:
                 Debug.LogWarning($"Неизвестное событие: {eventName}");
                 break;

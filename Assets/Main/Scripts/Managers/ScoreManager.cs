@@ -1,41 +1,58 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
-
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private int maxScore;
+    private int goodScore = 0;
+    private int badScore = 0;
     private int score = 0;
 
-    public int Score
+    public int BadScore
     {
         get
         {
-            return score;
+            return badScore;
         }
         set
         {
-            if (score != value)
+            if (badScore != value)
             {
-                score = value;
-                OnScoreChanging.Invoke(score);
+                badScore = value;
+                OnScoreChanging.Invoke(goodScore, badScore);
             }
         }
     }
 
-    public UnityEvent<int> OnScoreChanging = new UnityEvent<int>();
+    public int GoodScore
+    {
+        get
+        {
+            return goodScore;
+        }
+        set
+        {
+            if (goodScore != value)
+            {
+                goodScore = value;
+                OnScoreChanging.Invoke(goodScore, badScore);
+            }
+        }
+    }
+
+    public UnityEvent<int, int> OnScoreChanging = new UnityEvent<int, int>();
 
     private void Start()
     {
         OnScoreChanging.AddListener(ChangeScore);
     }
 
-    private void ChangeScore(int score)
+    private void ChangeScore(int goodScore, int badScore)
     {
-        Debug.Log($"Score changing to: {score}");
-        scoreText.text = score.ToString();
+        Debug.Log($"Количество правильных ответов: {goodScore}\nКоличество неправильных ответов: {badScore}\nЭффективность: {Mathf.Round(goodScore/(maxScore))}");
+        scoreText.text = $"Количество правильных ответов: {goodScore}\nКоличество неправильных ответов: {badScore}\nЭффективность: {Mathf.Round(goodScore / (maxScore))}%";
     }
 
     private void OnDestroy()
@@ -43,3 +60,4 @@ public class ScoreManager : MonoBehaviour
         OnScoreChanging.RemoveListener(ChangeScore);
     }
 }
+
