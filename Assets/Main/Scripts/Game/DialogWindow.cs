@@ -24,14 +24,17 @@ public class DialogWindow : MonoBehaviour
         if (isVisible && player != null)
         {
             Vector3 lookDirection = player.position - transform.position;
-            lookDirection.y = 0;
+            lookDirection.y = 0; // Только горизонтальный поворот
 
-            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Slerp(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
+            if (lookDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection, Vector3.up);
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    targetRotation,
+                    rotationSpeed * Time.deltaTime
+                );
+            }
         }
     }
 

@@ -1,0 +1,57 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "text": "Здравствуйте!",
+            "dialogueEvent": "meet_MCHS",
+            "choices": [
+                {
+                    "text": "Чем ты играешься?",
+                    "nextNodeId": 1
+                },
+                {
+                    "text": "Нет, всё хорошо",
+                    "nextNodeId": 3
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "text": "Феейрверком, а что?",
+            "dialogueEvent": "",
+            "choices": [
+                {
+                    "text": "Детям нельзя играться с пиротехникой",
+                    "nextNodeId": 2
+                },
+                {
+                    "text": "Простите, ничего",
+                    "nextNodeId": 3
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "Ой, я не знал, вот держите",
+            "dialogueEvent": "clean_fireworks",
+            "choices": [
+                {
+                    "text": "Спасибо за понимание",
+                    "nextNodeId": 4
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "До свидания",
+            "dialogueEvent": "lose_with_start_rockets_1",
+            "choices": []
+        },
+        {
+            "id": 4,
+            "text": "Эх(",
+            "dialogueEvent": "success_1",
+            "choices": []
+        }
+    ]
+}

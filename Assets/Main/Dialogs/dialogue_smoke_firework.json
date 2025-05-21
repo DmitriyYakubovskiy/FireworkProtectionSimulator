@@ -6,34 +6,49 @@
             "dialogueEvent": "meet_MCHS",
             "choices": [
                 {
-                    "text": "Здесь нельзя запускать салюты",
+                    "text": "Вам нельзя запускать фейерверки",
                     "nextNodeId": 1
                 },
                 {
                     "text": "Нет, всё хорошо",
-                    "nextNodeId": 2
+                    "nextNodeId": 3
                 }
             ]
         },
         {
             "id": 1,
-            "text": "Блин, я не знал, сейчас всё уберу",
-            "dialogueEvent": "clean_fireworks",
+            "text": "Почему??",
+            "dialogueEvent": "",
             "choices": [
                 {
-                    "text": "Спасибо за понимание",
+                    "text": "Нельзя курить рядом с феерверками",
+                    "nextNodeId": 2
+                },
+                {
+                    "text": "Простите, всё хорошо",
                     "nextNodeId": 3
                 }
             ]
         },
         {
             "id": 2,
+            "text": "Ой, я не знал, сейчас всё уберу",
+            "dialogueEvent": "clean_fireworks",
+            "choices": [
+                {
+                    "text": "Спасибо за понимание",
+                    "nextNodeId": 4
+                }
+            ]
+        },
+        {
+            "id": 3,
             "text": "Всего доброго",
             "dialogueEvent": "lose_with_start_rockets_1",
             "choices": []
         },
         {
-            "id": 3,
+            "id": 4,
             "text": "Эх, жалко всё таки...",
             "dialogueEvent": "success_1",
             "choices": []

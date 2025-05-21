@@ -1,0 +1,57 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "text": "Добрый вечер, что-то случилось?",
+            "dialogueEvent": "meet_MCHS",
+            "choices": [
+                {
+                    "text": "Вам нельзя запускать фейерверки",
+                    "nextNodeId": 1
+                },
+                {
+                    "text": "Нет, всё хорошо",
+                    "nextNodeId": 3
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "text": "Почему??",
+            "dialogueEvent": "",
+            "choices": [
+                {
+                    "text": "Потому что нельзя запускать фейерверки в закрытой местности, рядом с вами много деревьев",
+                    "nextNodeId": 2
+                },
+                {
+                    "text": "Простите, всё хорошо",
+                    "nextNodeId": 3
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "Ой, я не знал, сейчас всё уберу",
+            "dialogueEvent": "clean_fireworks",
+            "choices": [
+                {
+                    "text": "Спасибо за понимание",
+                    "nextNodeId": 4
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "Всего доброго",
+            "dialogueEvent": "lose_with_start_rockets_1",
+            "choices": []
+        },
+        {
+            "id": 4,
+            "text": "Печально...",
+            "dialogueEvent": "success_1",
+            "choices": []
+        }
+    ]
+}

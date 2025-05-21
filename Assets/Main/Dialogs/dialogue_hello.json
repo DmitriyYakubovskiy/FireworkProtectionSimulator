@@ -1,0 +1,10 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "text": "Здравствуйте!",
+            "dialogueEvent": "meet_MCHS",
+            "choices": []
+        }
+    ]
+}

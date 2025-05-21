@@ -5521,7 +5521,9 @@ MonoBehaviour:
   - soundArray:
     - {fileID: 8300000, guid: 2f3f3f30928c7034182d1a84664aa138, type: 3}
   - soundArray:
+    - {fileID: 8300000, guid: d1725124561bdac42aa2d43ed0f97538, type: 3}
     - {fileID: 8300000, guid: 2ead733039f673f43b614308e1c1f635, type: 3}
+    - {fileID: 8300000, guid: 5ddfc82a1c1d2b944b5a8fcef648d489, type: 3}
 --- !u!54 &5409040755297749965
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5544,8 +5546,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
+  m_UseGravity: 1
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -5563,8 +5565,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightPointExplore: {fileID: 2733720972128807773}
   lightPointFly: {fileID: 755083677675215882}
-  body: {fileID: 5409040755297749965}
-  meshRenderer: {fileID: 7020446494918900624}
   force: 13.98
   duration: 2.5
   isRandomFlight: 1
@@ -5584,17 +5584,17 @@ AudioSource:
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.06
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 0
-  DopplerLevel: 5
+  Priority: 128
+  DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 1000
-  Pan2D: 0.02
-  rolloffMode: 2
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -5627,7 +5627,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.9362335
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5642,7 +5642,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.90218097
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5657,7 +5657,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.86485445
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

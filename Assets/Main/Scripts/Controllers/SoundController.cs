@@ -22,7 +22,7 @@ public class SoundController : MonoBehaviour
         PlaySound(0, volume: Volume, isDestroyed:true);
     }
 
-    public void PlaySound(int i = 0, float volume = 1f, float p1 = 0.85f, float p2 = 1.2f, bool isDestroyed = false)
+    public void PlaySound(int i = 0, float volume = 1f, float p1 = 0.85f, float p2 = 1.2f, bool isDestroyed = false, bool isGlobal = false)
     {
         int index = Random.Range(0, sounds[i].soundArray.Length);
         AudioClip clip = sounds[i].soundArray[index];
@@ -38,6 +38,14 @@ public class SoundController : MonoBehaviour
             source.spatialBlend = 1f;
             source.volume = volume;
             source.pitch = Random.Range(p1, p2);
+
+            if (isGlobal)
+            {
+                source.spatialBlend = 0;
+                source.maxDistance = 100000;
+                source.minDistance = 0;
+            }
+            
             source.Play();
             Destroy(soundObj, clip.length);
         }

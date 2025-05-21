@@ -98,24 +98,25 @@ public class DialogueSystem : MonoBehaviour
 
     private void HandleEvent(string eventName)
     {
-        Debug.Log("Познакомился с МЧС");
-        // Пример обработки событий
         switch (eventName)
         {
             case "meet_MCHS":
                 Debug.Log("dialogue_init");
                 break;
             case "clean_fireworks":
-                Debug.Log("Начался квест: Испытание героя!");
-                // Здесь можно активировать квест в системе квестов
+                Destroy(rocketLauncher.gameObject);
                 break;
+            case "lose_1":
+                scoreManager.Score -= 1;
+                break;  
             case "lose_with_start_rockets_1":
-                Debug.Log("Салюты запускаются");
                 scoreManager.Score -= 1;
                 rocketLauncher.Launch();
                 break;
             case "success_1":
-                Debug.Log("Игрок направляется в темный лес!");
+                scoreManager.Score += 1;
+                break;
+            case "success_with_start_rockets_1":
                 scoreManager.Score += 1;
                 break;
             default:

@@ -1,26 +1,30 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Rocket:MonoBehaviour
 {
     [SerializeField] private GameObject lightPointExplore;
     [SerializeField] private GameObject lightPointFly;
-    [SerializeField] private Rigidbody body;
-    [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private float force = 20f, duration = 5;
     [SerializeField] private bool isRandomFlight = false;
     [SerializeField] private ParticleSystem fire, explore;
+
+    private Rigidbody rb;
     private SoundController soundController;
     private bool flag = true;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         soundController = GetComponent<SoundController>();
     }
 
     public void StartFly()
     {
         StartCoroutine(DelayedAction());
+        rb.useGravity = false;
+        rb.isKinematic = false;
         soundController.PlaySound(0, volume:soundController.Volume);
         lightPointFly.SetActive(true);
     }
@@ -59,7 +63,7 @@ public class Rocket:MonoBehaviour
                 xRand = Random.Range(-6, 6);
                 zRand = Random.Range(-6, 6);
             }
-            body.AddForce((new Vector3(xRand, force, zRand)), ForceMode.Impulse);
+            rb.AddForce((new Vector3(xRand, force, zRand)), ForceMode.Impulse);
         }
         yield break;
     }
@@ -67,9 +71,12 @@ public class Rocket:MonoBehaviour
     IEnumerator Boom()
     {
         explore.Play();
-        soundController.PlaySound(1, isDestroyed: true, volume: 1);
-        body.useGravity = false;
-        meshRenderer.enabled = false;
+        soundController.PlaySound(1, isDestroyed: true, volume: 0.3f, isGlobal:true);
+        var components = GetComponentsInChildren<MeshFilter>();
+        foreach(var component in components)
+        {
+            Destroy(component);
+        }
         yield return new WaitForSeconds(explore.main.startLifetimeMultiplier);
         Destroy(gameObject);
     }
