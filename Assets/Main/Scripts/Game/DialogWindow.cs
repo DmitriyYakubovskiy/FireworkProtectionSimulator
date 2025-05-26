@@ -1,3 +1,4 @@
+using UnityEditor.XR.LegacyInputHelpers;
 using UnityEngine;
 
 public class DialogWindow : MonoBehaviour
