@@ -3178,6 +3178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2717395650310496025, guid: fb35dbefdd8bfb042bef6540ce8d6ad5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a7f90941637d24e8339d20927478ec, type: 2}
     - target: {fileID: 919132149155446097, guid: fb35dbefdd8bfb042bef6540ce8d6ad5, type: 3}
       propertyPath: m_Name
       value: Child_talking2
@@ -4270,6 +4274,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2717395650310496025, guid: fb35dbefdd8bfb042bef6540ce8d6ad5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a7f90941637d24e8339d20927478ec, type: 2}
     - target: {fileID: 919132149155446097, guid: fb35dbefdd8bfb042bef6540ce8d6ad5, type: 3}
       propertyPath: m_Name
       value: Child_talking2
@@ -5090,6 +5098,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2717395650310496025, guid: 54d5a43947cce4d44b8bf04f8b2e238f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a7f90941637d24e8339d20927478ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 54d5a43947cce4d44b8bf04f8b2e238f, type: 3}
       propertyPath: m_Name
       value: Child_gorka
@@ -7426,6 +7438,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2717395650310496025, guid: 72744a77fac46cd4e8f948a6b1d8b541, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 54a7f90941637d24e8339d20927478ec, type: 2}
     - target: {fileID: 919132149155446097, guid: 72744a77fac46cd4e8f948a6b1d8b541, type: 3}
       propertyPath: m_Name
       value: Child_with_a_ball1
