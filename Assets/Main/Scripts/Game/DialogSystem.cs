@@ -127,6 +127,7 @@ public class DialogueSystem : MonoBehaviour
 
             case "success_with_start_rockets_1":
                 scoreManager.GoodScore += 1;
+                rocketLauncher.Launch();
                 Destroy(gameObject, 5);
                 break;
 

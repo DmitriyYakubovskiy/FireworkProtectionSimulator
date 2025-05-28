@@ -13,6 +13,8 @@ public class FootstepSound : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
+        Cursor.lockState = CursorLockMode.Confined;
         characterController = GetComponent<CharacterController>();
     }
 

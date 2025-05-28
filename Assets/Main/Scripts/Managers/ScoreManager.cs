@@ -52,7 +52,7 @@ public class ScoreManager : MonoBehaviour
     private void ChangeScore(int goodScore, int badScore)
     {
         Debug.Log($"Количество правильных ответов: {goodScore}\nКоличество неправильных ответов: {badScore}\nЭффективность: {Mathf.Round(goodScore/(maxScore))}");
-        scoreText.text = $"Количество правильных ответов: {goodScore}\nКоличество неправильных ответов: {badScore}\nЭффективность: {Mathf.Round(goodScore / (maxScore))}%";
+        scoreText.text = $"Количество правильных ответов: {goodScore}\nКоличество неправильных ответов: {badScore}\nЭффективность: {Mathf.Round(((goodScore / (float)maxScore) * 100))}%";
     }
 
     private void OnDestroy()

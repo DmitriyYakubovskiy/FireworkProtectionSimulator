@@ -72,11 +72,6 @@ public class Rocket:MonoBehaviour
     {
         explore.Play();
         soundController.PlaySound(1, isDestroyed: true, volume: 0.3f, isGlobal:true);
-        var components = GetComponentsInChildren<MeshFilter>();
-        foreach(var component in components)
-        {
-            Destroy(component);
-        }
         yield return new WaitForSeconds(explore.main.startLifetimeMultiplier);
         Destroy(gameObject);
     }
